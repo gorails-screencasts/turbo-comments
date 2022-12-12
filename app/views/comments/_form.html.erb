@@ -1,0 +1,9 @@
+<%= form_with model: Comment.new, url: comments_path(commentable: commentable.to_sgid), id: dom_id(commentable, :comment_form) do |form| %>
+  <div>
+    <%= form.text_area :body, required: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+    <%= button_tag "Cancel", onclick: "this.closest('turbo-frame').replaceChildren()" if local_assigns[:cancel] %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<%= tag.div id: dom_id(comment, :with_replies) do %>
+  <%= render comment %>
+
+  <%# Actions %>
+  <div>
+    <%= link_to "Reply", new_comment_path(commentable: comment.to_sgid), data: {turbo_frame: dom_id(comment, :reply)} %>
+  </div>
+
+  <%# Nested comments %>
+  <div style="margin-left:3rem;">
+    <%= turbo_frame_tag :reply, comment %>
+
+    <%= render partial: "comments/comments", locals: {commentable: comment} %>
+  </div>
+<% end %>

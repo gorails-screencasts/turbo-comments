@@ -1,0 +1,3 @@
+<%= turbo_frame_tag :reply, @commentable do %>
+  <%= render partial: "comments/form", locals: {commentable: @commentable, cancel: true} %>
+<% end %>

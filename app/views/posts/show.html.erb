@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
+
+<h3>Discussion</h3>
+<%= render partial: "comments/form", locals: {commentable: @post} %>
+<%= turbo_frame_tag @post, :comments, src: comments_path(commentable: @post.to_sgid) %>

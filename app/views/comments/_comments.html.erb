@@ -1,0 +1,6 @@
+<%= turbo_frame_tag commentable, :comments do %>
+  <%= turbo_stream_from commentable %>
+  <%= tag.div id: dom_id(commentable, :comments) do %>
+    <%= render partial: "comments/comment_with_replies", collection: commentable.comments, as: :comment %>
+  <% end %>
+<% end %>

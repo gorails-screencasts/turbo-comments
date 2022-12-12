@@ -1,0 +1,8 @@
+<%#= turbo_stream.append(dom_id(@commentable, :comments), partial: "comments/comment_with_replies", locals: { comment: @comment }) %>
+
+<%# Replies can close the comment form %>
+<% if @commentable.is_a? Comment %>
+  <%= turbo_stream.replace dom_id(@commentable, :comment_form), "" %>
+<% else %>
+  <%= turbo_stream_action_tag :reset_form, target: dom_id(@commentable, :comment_form) %>
+<% end %>
